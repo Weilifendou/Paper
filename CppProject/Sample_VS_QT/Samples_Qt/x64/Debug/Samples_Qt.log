@@ -1,0 +1,23 @@
+﻿生成启动时间为 2023/7/24 12:56:25。
+     1>项目“C:\Program Files\Microvision\E_EM_HS\SDK\Sample_VS_QT\Samples_Qt\Samples_Qt.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     1>QtVars:
+         WHERE /Q cl.exe
+         ("C:/Qt/Qt5.12.6/5.12.6/msvc2015_64/bin/qmake" -query) 1> props.txt
+         Reading Qt configuration (C:/Qt/Qt5.12.6/5.12.6/msvc2015_64/bin/qmake)
+         ("C:/Qt/Qt5.12.6/5.12.6/msvc2015_64/bin/qmake" "CONFIG -= debug release debug_and_release" "CONFIG += debug" qtvars.pro) 1> qtvars.log 2>&1
+     1>项目“C:\Program Files\Microvision\E_EM_HS\SDK\Sample_VS_QT\Samples_Qt\Samples_Qt.vcxproj”(1)正在节点 2 上生成“C:\Program Files\Microvision\E_EM_HS\SDK\Sample_VS_QT\Samples_Qt\Samples_Qt.vcxproj”(1:2) (Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\bin\QTBin\MSVC\Samples_Qtd.exe" /NOLOGO /LIBPATH:../../lib /LIBPATH:C:\openssl\lib /LIBPATH:"C:\Utils\my_sql\mysql-5.6.11-winx64\lib" /LIBPATH:C:\Utils\postgresql\pgsql\lib MVCamProptySheet.lib MVGigE.lib MVTickDlg.lib C:\Qt\Qt5.12.6\5.12.6\msvc2015_64\lib\Qt5Widgetsd.lib C:\Qt\Qt5.12.6\5.12.6\msvc2015_64\lib\Qt5Guid.lib C:\Qt\Qt5.12.6\5.12.6\msvc2015_64\lib\Qt5Cored.lib C:\Qt\Qt5.12.6\5.12.6\msvc2015_64\lib\qtmaind.lib shell32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"..\..\bin\QTBin\MSVC\Samples_Qtd.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\bin\QTBin\MSVC\Samples_Qtd.lib" /MACHINE:X64  /SUBSYSTEM:WINDOWS x64\Debug\main.obj
+         x64\Debug\MVScrollArea.obj
+         x64\Debug\Samples_Qt_TriggerCount.obj
+         x64\Debug\qrc_Samples_Qt_TriggerCount.obj
+         x64\Debug\moc_Samples_Qt_TriggerCount.obj
+         Samples_Qt.vcxproj -> C:\Program Files\Microvision\E_EM_HS\SDK\Sample_VS_QT\Samples_Qt\..\..\bin\QTBin\MSVC\Samples_Qtd.exe
+     1>已完成生成项目“C:\Program Files\Microvision\E_EM_HS\SDK\Sample_VS_QT\Samples_Qt\Samples_Qt.vcxproj”(Build 个目标)的操作。
+     1>已完成生成项目“C:\Program Files\Microvision\E_EM_HS\SDK\Sample_VS_QT\Samples_Qt\Samples_Qt.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:00.72
