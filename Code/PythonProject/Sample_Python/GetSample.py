@@ -49,20 +49,18 @@ def CapBin():
 		print("MVStartGrabWindow error")
 		MVCloseCam(hCam)
 		return 0
-	
+
 	while True:
-		res, id = MVGetSampleGrabBuf(hCam, img, 50)
-		if res == MVST_SUCCESS:			
-			ret,imgBin = cv2.threshold(img,152,255,cv2.THRESH_BINARY)
-			cnt = cv2.countNonZero(imgBin)
-			cv2.putText(imgBin, str(cnt), (50,50), 
-						cv2.FONT_ITALIC, 1,(255,255,255),1)
-			cv2.imshow('img',imgBin)
+		res, id = MVGetSampleGrabBuf(hCam, img, 10)
+		if res == MVST_SUCCESS:
+			raw = cv2.resize(img, (1200, 800))
+			raw = cv2.flip(raw, -1) #参数为0上下翻转，1为左右翻转，-1为上下左右均翻转
+			cv2.imshow('img',raw)
 			if cv2.waitKey(1) == 27:
 				break
 		else:
 			print(res)
-	
+
 	MVStopGrab(hCam)  # 停止采集
 	MVCloseCam(hCam)
 

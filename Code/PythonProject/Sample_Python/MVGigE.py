@@ -3,7 +3,7 @@ from GigECamera_Types import *
 import numpy as np 
 import ctypes
 
-MVGigE = windll.LoadLibrary('MVGigE') 
+MVGigE = windll.LoadLibrary('C:\Files\Paper\Creations\Code\PythonProject\Sample_Python\MVGigE')
 
 def MVInfo2Img(info):
 	stFrameInfo = cast(info, POINTER(MV_IMAGE_INFO)).contents
