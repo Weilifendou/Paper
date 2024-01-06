@@ -1,9 +1,9 @@
-from ctypes import *
-from GigECamera_Types import * 
-import numpy as np 
-import ctypes
+from GigECameraTypes import *
+import numpy as np
+import os
 
-MVGigE = windll.LoadLibrary('C:\Files\Paper\Creations\Code\PythonProject\Sample_Python\MVGigE')
+path = os.path.join(os.getcwd(), 'MVGigE')
+MVGigE = windll.LoadLibrary(path)
 
 def MVInfo2Img(info):
 	stFrameInfo = cast(info, POINTER(MV_IMAGE_INFO)).contents

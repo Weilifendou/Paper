@@ -5,18 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="383b7cca-3fc7-484f-9b96-f6d4180f9be4" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/DetectBoard.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/111.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dema1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dema2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dema3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GigECamera_Types.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MVGigE.py" beforeDir="false" afterPath="$PROJECT_DIR$/MVGigE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biaoding.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/black.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/calibration.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eraseNoisy.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sample_Python/GetSample.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Sample_Python/GetSample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sample_Python/MVGigE.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Sample_Python/MVGigE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../数据记录/孔洞填充.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../数据记录/数据表.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../文档/基于机器视觉定制家具板材的检测相关技术路线和设备订单.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../文档/基于机器视觉定制家具板材的检测相关技术路线和设备订单.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../文档/小论文.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../文档/计划表.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/r.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reserve.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +37,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/GigECameraTypes.py" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
