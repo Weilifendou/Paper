@@ -1,0 +1,195 @@
+
+from datetime import datetime
+def WriteDataToExcel():
+    base = 0
+    order = 0
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    filename = f"data_{timestamp}.xlsx"
+    path = os.path.join(os.getcwd(), filename)
+    writer = pd.ExcelWriter(path, engine="xlsxwriter")
+    while order < 10:
+        order += 1
+        base += 5
+        mean = 0.2  # 均值
+        size = 500
+        std = np.random.uniform(0.135, 0.273)
+        e = np.random.normal(mean, std, size)
+        signs = np.random.choice([-1, 1], size=size)
+        # 应用正负号
+        e = e * signs
+        x = base + e
+        x = np.round(x, 3)
+        df = pd.DataFrame(x)
+        df.to_excel(writer, sheet_name='Sheet1', index=False, startrow=0, startcol=order-1)
+        m = np.mean(x)
+        e = m - base
+        std = np.std(x)
+        print(f'{order}', end="\t")
+        print(f'{base}', end="\t")
+        print(f'{m:.3f}', end="\t")
+        print(f'{e:.3f}', end="\t")
+        print(f'{std:.3f}')
+    writer.close()
+def ReadDataFromExcel():
+    fileName = 'data_20240326135937.xlsx'
+    path = os.path.join(os.getcwd(), fileName)
+    df = pd.read_excel(path, sheet_name='Sheet1')
+    x = df.values
+
+    m = np.mean(x, axis=0)
+    std = np.std(x, axis=0)
+    print(std)
+
+
+def RgbToLab(rgb):
+    # 将RGB值转换为0-1范围内的浮点数
+    r = rgb[0]
+    g = rgb[1]
+    b = rgb[2]
+    r = r / 255.0
+    g = g / 255.0
+    b = b / 255.0
+
+    # 将RGB转换为线性RGB
+    def to_linear(c):
+        if c <= 0.04045:
+            return c / 12.92
+        else:
+            return ((c + 0.055) / 1.055) ** 2.4
+
+    r_linear = to_linear(r)
+    g_linear = to_linear(g)
+    b_linear = to_linear(b)
+
+    # 将线性RGB转换为XYZ
+    x = 0.4124564 * r_linear + 0.3575761 * g_linear + 0.1804375 * b_linear
+    y = 0.2126729 * r_linear + 0.7151522 * g_linear + 0.0721750 * b_linear
+    z = 0.0193339 * r_linear + 0.1191920 * g_linear + 0.9503041 * b_linear
+
+    # 将XYZ转换为Lab
+    def to_lab(t):
+        if t > 0.008856:
+            return t ** (1 / 3)
+        else:
+            return (903.3 * t + 16) / 116
+
+    x_normalized = to_lab(x / 0.95047)
+    y_normalized = to_lab(y / 1.00000)
+    z_normalized = to_lab(z / 1.08883)
+
+    l = (116 * y_normalized) - 16
+    a = 500 * (x_normalized - y_normalized)
+    b = 200 * (y_normalized - z_normalized)
+
+    return l, a, b
+
+
+def test4():
+    # 创建一个200x200的空图像
+    image = np.ones((200, 950, 3), dtype=np.uint8)
+    cv2.rectangle(image, (0, 0), (950, 200), White, -1)
+
+    # 定义要绘制的颜色
+    colors = [(50, 45, 36), (160, 135, 111), (115, 124, 115), (126, 105, 85)]
+
+    # 在图像中绘制颜色方块
+    for i, color in enumerate(colors):
+        x = i * 250  # 计算方块的x坐标
+        cv2.rectangle(image, (x, 0), (x + 200, 200), color, -1)  # 绘制方块
+
+    # 显示图像
+    cv2.imshow("Colors", image)
+    cv2.waitKey(0)
+
+
+from ciede2000 import CIEDE2000
+
+def test5():
+    sam = []
+    sam.append(RgbToLab(35, 46, 51))
+    sam.append(RgbToLab(111, 135, 160))
+    sam.append(RgbToLab(115, 124, 115))
+    sam.append(RgbToLab(85, 105, 126))
+    std = []
+    std.append(RgbToLab(35, 45, 50))
+    std.append(RgbToLab(110, 135, 160))
+    std.append(RgbToLab(115, 125, 115))
+    std.append(RgbToLab(85, 105, 125))
+
+    acd = []
+    for l in sam:
+        acd.append(CIEDE2000(l, (0, 0, 0)))
+    rcd = []
+    for l, s in zip(sam, std):
+        rcd.append(CIEDE2000(l, s))
+
+    print('样本色的Lab色彩：')
+    for l in sam:
+        for i in l:
+            print(f'{i:.3f}', end=', ')
+        print('')
+    print('')
+    print('标准色的Lab色彩：')
+    for s in std:
+        for i in s:
+            print(f'{i:.3f}', end=', ')
+        print('')
+    print('')
+    print('相对参考色的绝对色差：')
+    for i in acd:
+        print(f'{i:.3f}', end=', ')
+    print('')
+    print('相对标准色的相对色差：')
+    for i in rcd:
+        print(f'{i:.3f}', end=', ')
+    print('')
+
+def test6():
+
+    # std = [(140, 200, 40), (100, 215, 130), (165, 80, 155), (145, 110, 180),
+    #        (230, 45, 60), (200, 85, 105), (160, 120, 180), (160, 150, 10),
+    #        (230, 30, 205), (240, 255, 155), (190, 50, 240), (55, 30, 200),
+    #        (155, 210, 250), (25, 115, 215), (205, 115, 225), (150, 5, 160),
+    #        (105, 140, 135), (5, 155, 90), (185, 65, 70), (65, 105, 150)]
+    # sam = [(140, 201, 40), (100, 214, 130), (165, 80, 156), (145, 111, 180),
+    #        (230, 45, 61), (201, 85, 105), (161, 120, 180), (160, 152, 10),
+    #        (230, 30, 204), (240, 254, 155), (190, 51, 240), (54, 30, 200),
+    #        (155, 210, 251), (25, 115, 213), (205, 115, 224), (151, 5, 160),
+    #        (105, 140, 134), (5, 154, 90), (185, 64, 70), (64, 105, 150)]
+    std = [(255, 175, 65), (115, 180, 115), (155, 235, 240), (145, 170, 35),
+           (10, 200, 10), (210, 85, 10), (15, 70, 40), (40, 95, 110),
+           (70, 245, 180), (190, 130, 110), (135, 25, 210), (50, 210, 110),
+           (135, 140, 115), (100, 165, 235), (140, 10, 60), (5, 55, 175),
+           (225, 90, 120), (10, 165, 5), (115, 150, 230), (250, 40, 210)]
+
+    sam = [(255, 173, 64), (114, 182, 115), (154, 233, 240), (145, 172, 33),
+           (9, 200, 9), (209, 84, 10), (15, 72, 41), (41, 95, 110),
+           (70, 243, 177), (191, 129, 110), (134, 24, 209), (49, 211, 111),
+           (134, 140, 115), (100, 163, 232), (141, 11, 60), (6, 54, 176),
+           (225, 91, 121), (9, 165, 6), (115, 151, 231), (251, 40, 211)]
+    image = np.ones((80, 800, 3), dtype=np.uint8)
+    for i, color in enumerate(std):
+        x = i * 40  # 计算方块的x坐标
+        cv2.rectangle(image, (x, 0), (x + 40, 80), color, -1)  # 绘制方块
+    # 在图像中绘制颜色方块
+    for i, color in enumerate(sam):
+        x = i * 40  # 计算方块的x坐标
+        cv2.rectangle(image, (x, 0), (x + 40, 80), color, -1)  # 绘制方块
+    stdlab = []
+    for s in std:
+        stdlab.append(RgbToLab(s))
+    samlab = []
+    for s in sam:
+        samlab.append(RgbToLab(s))
+    cd = []
+    for l, s in zip(stdlab, samlab):
+        cd.append(CIEDE2000(l, s))
+    for i in range(0, 20):
+        print(f'{i + 1}\t({stdlab[i][0]:.3f}, {stdlab[i][1]:.3f}, {stdlab[i][2]:.3f})'
+              f'\t({samlab[i][0]:.3f}, {samlab[i][1]:.3f}, {samlab[i][2]:.3f})\t{cd[i]:.3f}')
+    # 显示图像
+    cv2.imshow("std", image)
+    # 显示图像
+    cv2.imshow("sam", image)
+    cv2.waitKey(0)
+
