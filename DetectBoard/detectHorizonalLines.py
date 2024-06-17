@@ -1,3 +1,4 @@
+
 def detectHorizontalLines(edges, length):
     lines = []
     flag = 0
